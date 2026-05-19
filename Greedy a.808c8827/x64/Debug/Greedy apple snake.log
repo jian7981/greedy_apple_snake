@@ -1,0 +1,42 @@
+﻿  main.cpp
+D:\第四学期\Greedy apple snake\main.cpp(114,7): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+D:\第四学期\Greedy apple snake\main.cpp(114,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\第四学期\Greedy apple snake\main.cpp(114,7): error C2059: 语法错误:“<”
+D:\第四学期\Greedy apple snake\main.cpp(114,44): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\第四学期\Greedy apple snake\main.cpp(114,44): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\第四学期\Greedy apple snake\main.cpp(145,7): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+D:\第四学期\Greedy apple snake\main.cpp(145,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\第四学期\Greedy apple snake\main.cpp(145,1): error C2086: “int vector”: 重定义
+      D:\第四学期\Greedy apple snake\main.cpp(114,1):
+      参见“vector”的声明
+  
+D:\第四学期\Greedy apple snake\main.cpp(145,7): error C2059: 语法错误:“<”
+D:\第四学期\Greedy apple snake\main.cpp(153,12): error C2065: “levels”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(158,23): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(158,16): error C2530: “part”: 必须初始化引用
+D:\第四学期\Greedy apple snake\main.cpp(158,16): error C3531: “part”: 类型包含“auto”的符号必须具有初始值设定项
+D:\第四学期\Greedy apple snake\main.cpp(158,21): error C2143: 语法错误: 缺少“;”(在“:”的前面)
+D:\第四学期\Greedy apple snake\main.cpp(158,32): error C2143: 语法错误: 缺少“;”(在“)”的前面)
+D:\第四学期\Greedy apple snake\main.cpp(159,13): error C2660: “IsWall”: 函数不接受 2 个参数
+      D:\第四学期\Greedy apple snake\main.cpp(151,6):
+      参见“IsWall”的声明
+      D:\第四学期\Greedy apple snake\main.cpp(159,13):
+      尝试匹配参数列表“()”时
+  
+D:\第四学期\Greedy apple snake\main.cpp(171,61): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+D:\第四学期\Greedy apple snake\main.cpp(171,44): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+D:\第四学期\Greedy apple snake\main.cpp(178,5): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(180,5): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(181,5): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(182,5): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(189,25): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(189,46): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(193,5): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(193,22): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(194,5): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(223,25): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(223,41): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(271,17): error C2065: “levels”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(277,25): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(278,17): error C2065: “snakeBody”: 未声明的标识符
+D:\第四学期\Greedy apple snake\main.cpp(279,17): error C2065: “snakeBody”: 未声明的标识符
