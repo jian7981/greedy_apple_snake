@@ -1,0 +1,30 @@
+# Visual Studio 所有缓存、配置、临时文件（解决你超限的元凶）
+.vs/
+*.ipch
+*.VC.db
+*.Browse.VC.db
+*.opendb
+
+# 编译生成的中间文件、可执行文件
+Debug/
+Release/
+x64/
+x86/
+*.obj
+*.exe
+*.ilk
+*.pdb
+
+# 日志、临时文件
+*.log
+*.tmp
+
+# C++ 其他编译产物
+*.idb
+*.sdf
+
+# IDE 用户私有设置
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
