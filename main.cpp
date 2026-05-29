@@ -228,6 +228,15 @@ public:
     // 获取蛇头坐标
     Vector2 GetHeadPos() { return body[0]; }
 
+    //判断是不是完全竖直向上的
+    bool Is_complete_up() {
+		for (int i = 1; i < body.size(); i++) {
+			if (body[i].x != body[0].x ) {
+				return false;
+			}
+		}
+        return true;
+    }
     /**
      * @brief 检查坐标是否在蛇的身体上
      * @param x 横坐标
@@ -454,8 +463,8 @@ public:
                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,0,0,3,0,0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,3,3,0,0,0,4,0,0,0,0,0,0},
-                {0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,3,3,0,0,0,5,4,0,0,0,0,0},
+                {0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -534,7 +543,7 @@ public:
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-}            
+}
 
              ,
             {
@@ -559,7 +568,7 @@ public:
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-},             
+},
             {//5             x              x             x             x
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -580,6 +589,7 @@ public:
     {0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//20
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 },
              {
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -1041,8 +1051,8 @@ bool Snake::Move(int dx, int dy, GameMap* map)
         breakDropState.push_back(false);
         breakDropTimer.push_back(0);
         int len = body.size();
-        for (int i = half+1; i < len; i++) body.pop_back(); // 删除后半部分身体，然后变长一格
-        
+        for (int i = half + 1; i < len; i++) body.pop_back(); // 删除后半部分身体，然后变长一格
+
         isPoisoned = false; // 清除中毒状态
     }
 
@@ -1066,16 +1076,16 @@ bool Snake::Move(int dx, int dy, GameMap* map)
     {
         // 吃到食物：身体变长
         body.insert(body.begin(), newHead);
-        
+
         map->ClearCell((int)newHead.x, (int)newHead.y);
     }
     else
     {
-        
-            body.insert(body.begin(), newHead);
-            body.pop_back();
-        
-        
+
+        body.insert(body.begin(), newHead);
+        body.pop_back();
+
+
     }
 
     // 移动后检查是否需要掉落
@@ -1092,9 +1102,14 @@ void Snake::PlayerControl(GameMap* map)
 
     // 检测按键，筛选合法转向，不立刻修改当前方向
     if (IsKeyPressed(KEY_UP) && dir != DOWN)
-    {
-        targetDir = UP;
-        dy = -1;
+    {   //竖直向上不能在原地跳
+        if (Is_complete_up()) {
+            return;
+        }else{
+            targetDir = UP;
+            dy = -1;
+        }
+        
     }
     else if (IsKeyPressed(KEY_DOWN) && dir != UP)
     {
@@ -1386,7 +1401,7 @@ public:
         Vector2 mouse = GetMousePosition();
         Rectangle userBox = { 450, 275, 300, 40 };
         Rectangle pwdBox = { 450, 325, 300, 40 };
-		// 点击输入框时切换焦点，点击其他区域时取消焦点
+        // 点击输入框时切换焦点，点击其他区域时取消焦点
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             if (CheckCollisionPointRec(mouse, userBox)) inputFocus = 0;
@@ -1469,7 +1484,7 @@ public:
         // 提交注册逻辑
         if (ui.DrawButton({ 450, 400, 300, 50 }, "Submit Register"))
         {
-			if (regUser.empty() || regPwd.size() < 6)
+            if (regUser.empty() || regPwd.size() < 6)
             {
                 tipMsg = "Username or password is invalid!";
                 tipTime = 2;
@@ -1544,13 +1559,13 @@ public:
     {
         int levelCnt = gameMap.GetLevelCount();
         float startY = 280.0f;
-		float startX = 300.0f;
+        float startX = 300.0f;
         float btnGap = 60.0f;
-		// 动态生成关卡按钮,先横着排放满再换行
+        // 动态生成关卡按钮,先横着排放满再换行
         for (int i = 0; i < levelCnt; i++)
         {
-			float btnY = startY + (i % 5) * btnGap; // 每5个按钮换一行
-			float btnX = startX + (i / 5) * 250; // 每5个按钮换一列
+            float btnY = startY + (i % 5) * btnGap; // 每5个按钮换一行
+            float btnX = startX + (i / 5) * 250; // 每5个按钮换一列
             string btnText = "Level " + to_string(i + 1);
             if (ui.DrawButton({ btnX, btnY, 200, 50 }, btnText.c_str()))
             {
@@ -1576,13 +1591,13 @@ public:
         ui.DrawTextTip("Select Level", 450, 200, 48, DARKGREEN);
         int levelCnt = gameMap.GetLevelCount();
         float startY = 280.0f;
-		float startX = 300.0f;
+        float startX = 300.0f;
         float btnGap = 60.0f;
         // 绘制所有关卡按钮
         for (int i = 0; i < levelCnt; i++)
         {
             float btnY = startY + (i % 5) * btnGap; // 每5个按钮换一行
-			float btnX = startX + (i / 5) * 250; // 每5个按钮换一列
+            float btnX = startX + (i / 5) * 250; // 每5个按钮换一列
             string btnText = "Level " + to_string(i + 1);
             ui.DrawButton({ btnX, btnY, 200, 50 }, btnText.c_str());
         }
@@ -1600,10 +1615,10 @@ public:
             gameMap.SwitchLevel(cur);
             snake.Init(gameMap.GetSnakeInitPos(cur));
         }
-        if (ui.DrawButton({ 1000,70,200,40 }, "change head")) {
+        if (ui.DrawButton({ 1000,700,200,40 }, "change head")) {
             snake.SwapSnakeHeadTail(); // 交换蛇头蛇尾
         }
-        if (ui.DrawButton({ 960,120,240,40 }, "Back to Main Menu")) {
+        if (ui.DrawButton({ 0,700,240,40 }, "Back to Main Menu")) {
             int cur = gameMap.GetCurLevel();
             gameMap.SwitchLevel(cur);
             snake.Init(gameMap.GetSnakeInitPos(cur));
@@ -1642,8 +1657,8 @@ public:
             int curLevel = gameMap.GetCurLevel() + 1; // 关卡号从1开始
             // 只计算一次通关耗时，之后不再改变
             gameCostTime = GetTime() - gameStartTime;
-			// 只插入一次数据库记录,比最好成绩好才更新
-            if(gameCostTime < db.GetUserBestTime(currentUserId, curLevel))
+            // 只插入一次数据库记录,比最好成绩好才更新
+            if (gameCostTime < db.GetUserBestTime(currentUserId, curLevel))
                 db.InsertLevelRecord(currentUserId, curLevel, gameCostTime);
             // 只查询一次最好成绩
             bestTime = db.GetUserBestTime(currentUserId, curLevel);
@@ -1675,14 +1690,14 @@ public:
         {
             curLv++;
             gameMap.SwitchLevel(curLv);
-			snake.Init(gameMap.GetSnakeInitPos(curLv));
+            snake.Init(gameMap.GetSnakeInitPos(curLv));
             gameMap.SwitchLevel(curLv);
             snake.Init(gameMap.GetSnakeInitPos(curLv));
             gameStartTime = GetTime(); // 进入下一关时重置开始时间
             isRecordSaved = false; // 重置保存标记
             gameState = state_gameplay;
         }
-        
+
     }
 
     // 游戏结束界面绘制
